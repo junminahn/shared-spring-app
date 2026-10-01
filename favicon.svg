@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Shared Spring quest-pin mark">
+  <defs><linearGradient id="lqBadge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232F41"/><stop offset="1" stop-color="#1A2330"/></linearGradient></defs>
+  <rect x="1.1" y="1.1" width="61.8" height="61.8" rx="14" fill="url(#lqBadge)" stroke="#101418" stroke-width="2.2"/>
+  <rect x="6" y="6" width="52" height="52" rx="9" fill="none" stroke="#A8864A" stroke-width="1.8"/>
+  <path d="M23.5 33.5 L40.5 33.5 L32 50 Z" fill="#101418"/>
+  <path d="M26 34.8 L38 34.8 L32 47.2 Z" fill="#2F6B3C"/>
+  <ellipse cx="33.5" cy="30.5" rx="11.5" ry="10.5" fill="#101418" opacity="0.45"/>
+  <circle cx="32.0" cy="26.5" r="12.5" fill="#2F6B3C"/>
+  <ellipse cx="27.0" cy="22.25" rx="4.5" ry="4.75" fill="#4A8D52"/>
+  <circle cx="26.5" cy="21.0" r="2" fill="#E7EEF5"/>
+  <path d="M20.5 30 A11.5 11.5 0 0 0 43.5 30 Z" fill="#1E4D2B"/>
+  <circle cx="32.0" cy="26.5" r="12.5" fill="none" stroke="#101418" stroke-width="2.6"/>
+  <circle cx="32.0" cy="26.5" r="6.2" fill="#101418"/>
+  <circle cx="32.0" cy="26.5" r="5.4" fill="#D7BE76"/>
+  <circle cx="32.0" cy="26.5" r="3.4" fill="#E7EEF5"/>
+  <polygon points="49.50,7.90 50.48,11.52 54.10,12.50 50.48,13.48 49.50,17.10 48.52,13.48 44.90,12.50 48.52,11.52" fill="#D7BE76"/>
+  <polygon points="15.00,43.90 15.76,46.74 18.60,47.50 15.76,48.26 15.00,51.10 14.24,48.26 11.40,47.50 14.24,46.74" fill="#D7BE76"/>
+  <circle cx="11.5" cy="13.5" r="1.5" fill="#D7BE76"/>
+  <circle cx="53.0" cy="43.0" r="1.5" fill="#D7BE76"/>
+</svg>

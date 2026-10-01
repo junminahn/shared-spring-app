@@ -1,0 +1,575 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" shape-rendering="geometricPrecision">
+  <!-- SHARED SPRING title backdrop: the journey panorama.
+       The whole 24-hour road in one vista, left-to-right in story order:
+       Greenwake mill+wheel, Reedglass stilts+water, Ironroot forge,
+       Cinder lighthouse, Frostveil frozen pond, Crownwell crowned spire —
+       with the Slime King's ghost-crown haunting the storm at far right.
+       1600x900 smooth vector art (gradients/circles/paths) so Phaser
+       cover-scaling stays crisp on big screens.
+       FX anchor fractions (must survive edits — TitleRenderer overlays):
+       moon ~(0.85w, 0.12h), lantern glows x 0.137/0.858 @ y 0.43h,
+       stars top third, embers/fireflies y 0.50-0.64h. Foreground road
+       geometry (y 532+) is load-bearing for the hero-vs-slime diorama. -->
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#050914"/>
+      <stop offset="0.45" stop-color="#101c3d"/>
+      <stop offset="0.70" stop-color="#263a75"/>
+      <stop offset="0.88" stop-color="#4a5a9c"/>
+      <stop offset="1" stop-color="#6b5a8c"/>
+    </linearGradient>
+    <linearGradient id="horizonGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8a04c" stop-opacity="0"/>
+      <stop offset="0.6" stop-color="#e8a04c" stop-opacity="0.27"/>
+      <stop offset="1" stop-color="#fde68a" stop-opacity="0.33"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fde68a" stop-opacity="0.35"/>
+      <stop offset="0.6" stop-color="#fde68a" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#fde68a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moonFace" cx="0.38" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#fffbe0"/>
+      <stop offset="0.7" stop-color="#fdf0b0"/>
+      <stop offset="1" stop-color="#f5d97a"/>
+    </radialGradient>
+    <linearGradient id="shootGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff7cc" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff7cc" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#35794b"/>
+      <stop offset="1" stop-color="#27603c"/>
+    </linearGradient>
+    <linearGradient id="hillNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#418552"/>
+      <stop offset="1" stop-color="#2c6b40"/>
+    </linearGradient>
+    <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a3a2a"/>
+      <stop offset="1" stop-color="#2e2115"/>
+    </linearGradient>
+    <radialGradient id="windowGlow" cx="0.5" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#fff7cc"/>
+      <stop offset="0.6" stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </radialGradient>
+    <radialGradient id="lanternGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fbbf24" stop-opacity="0.8"/>
+      <stop offset="0.4" stop-color="#f59e0b" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="roadGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#333f52"/>
+      <stop offset="0.5" stop-color="#232d3d"/>
+      <stop offset="1" stop-color="#161d29"/>
+    </linearGradient>
+    <linearGradient id="vergeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f6f45"/>
+      <stop offset="0.12" stop-color="#26573a"/>
+      <stop offset="1" stop-color="#1d4030"/>
+    </linearGradient>
+    <linearGradient id="fieldGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22402f"/>
+      <stop offset="1" stop-color="#1a3327"/>
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#274a6b"/>
+      <stop offset="1" stop-color="#16283d"/>
+    </linearGradient>
+    <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff7cc" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff7cc" stop-opacity="0.55"/>
+    </linearGradient>
+    <radialGradient id="crownAura" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f5c542" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#f5c542" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="emberGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fb923c" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#fb923c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="spireGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a2440"/>
+      <stop offset="1" stop-color="#0d1424"/>
+    </linearGradient>
+    <linearGradient id="mistGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#aec6dd" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#aec6dd" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#aec6dd" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.46" r="0.75">
+      <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.55"/>
+    </radialGradient>
+    <filter id="fB3" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="fB6" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="fB14" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="fB22" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="22"/></filter>
+    <g id="pine">
+      <rect x="-2.5" y="-10" width="5" height="10" fill="#0e211a"/>
+      <path d="M0,-52 L13,-14 L-13,-14 Z" fill="#12291f"/>
+      <path d="M0,-52 L6,-30 L-6,-30 Z" fill="#1d4030" opacity="0.8"/>
+    </g>
+    <g id="tuft" fill="none" stroke-linecap="round" stroke-width="3">
+      <path d="M0,0 C-2,-8 -3,-12 -6,-16"/>
+      <path d="M0,0 C0,-9 0,-14 0,-18"/>
+      <path d="M0,0 C2,-8 3,-12 6,-16"/>
+    </g>
+    <g id="snowpine">
+      <path d="M0,-40 L11,-12 L-11,-12 Z" fill="#14312b"/>
+      <path d="M0,-40 L6,-26 L-6,-26 Z" fill="#e7eef5" opacity="0.85"/>
+      <path d="M0,-28 L13,-2 L-13,-2 Z" fill="#14312b"/>
+      <path d="M0,-28 L5,-18 L-5,-18 Z" fill="#e7eef5" opacity="0.7"/>
+    </g>
+  </defs>
+
+  <!-- night sky -->
+  <rect x="0" y="0" width="1600" height="340" fill="url(#skyGrad)"/>
+  <rect x="0" y="272" width="1600" height="68" fill="url(#horizonGlow)"/>
+
+  <!-- stars -->
+  <g fill="#e7eef5">
+    <circle cx="100" cy="45" r="2.2" opacity="0.9"/><circle cx="190" cy="120" r="2" opacity="0.7"/>
+    <circle cx="300" cy="60" r="2.4" opacity="0.85"/><circle cx="470" cy="110" r="2" opacity="0.6"/>
+    <circle cx="600" cy="48" r="2.2" opacity="0.8"/><circle cx="700" cy="140" r="2" opacity="0.6"/>
+    <circle cx="66" cy="210" r="2" opacity="0.5"/><circle cx="340" cy="190" r="1.8" opacity="0.6"/>
+    <circle cx="530" cy="200" r="1.8" opacity="0.5"/><circle cx="830" cy="80" r="2.2" opacity="0.8"/>
+    <circle cx="900" cy="150" r="2" opacity="0.6"/><circle cx="980" cy="60" r="2.4" opacity="0.85"/>
+    <circle cx="1060" cy="170" r="2" opacity="0.6"/><circle cx="1150" cy="60" r="1.8" opacity="0.5"/>
+    <circle cx="1240" cy="200" r="1.8" opacity="0.6"/><circle cx="1470" cy="210" r="1.8" opacity="0.5"/>
+    <circle cx="1520" cy="90" r="2.2" opacity="0.8"/><circle cx="1560" cy="180" r="1.8" opacity="0.6"/>
+    <circle cx="40" cy="140" r="1.8" opacity="0.6"/><circle cx="260" cy="40" r="1.6" opacity="0.7"/>
+    <circle cx="410" cy="70" r="1.6" opacity="0.5"/><circle cx="560" cy="180" r="1.6" opacity="0.5"/>
+    <circle cx="640" cy="90" r="1.6" opacity="0.7"/><circle cx="880" cy="40" r="1.6" opacity="0.6"/>
+    <circle cx="940" cy="220" r="1.6" opacity="0.5"/><circle cx="1180" cy="130" r="1.6" opacity="0.7"/>
+    <circle cx="1290" cy="40" r="1.6" opacity="0.6"/><circle cx="1420" cy="140" r="1.6" opacity="0.5"/>
+    <circle cx="1500" cy="40" r="2" opacity="0.75"/><circle cx="60" cy="80" r="1.6" opacity="0.7"/>
+    <circle cx="130" cy="250" r="1.6" opacity="0.45"/><circle cx="760" cy="250" r="1.6" opacity="0.45"/>
+    <circle cx="1010" cy="250" r="1.6" opacity="0.45"/>
+  </g>
+  <g fill="#fde68a">
+    <circle cx="200" cy="170" r="1.8" opacity="0.8"/><circle cx="680" cy="190" r="1.8" opacity="0.7"/>
+  </g>
+  <g stroke="#fff7cc" stroke-width="1.5" opacity="0.8">
+    <path d="M974,60 h12 M980,54 v12"/><path d="M294,60 h12 M300,54 v12"/><path d="M1494,40 h12 M1500,34 v12"/>
+  </g>
+
+  <!-- shooting star -->
+  <g>
+    <circle cx="452" cy="52" r="10" fill="#fff7cc" opacity="0.45" filter="url(#fB6)"/>
+    <path d="M350,72 L452,52" stroke="url(#shootGrad)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="452" cy="52" r="4" fill="#fff7cc"/>
+  </g>
+
+  <!-- moon + halo -->
+  <g>
+    <circle cx="1360" cy="112" r="130" fill="url(#moonGlow)"/>
+    <circle cx="1360" cy="112" r="95" fill="#fde68a" opacity="0.14"/>
+    <circle cx="1360" cy="112" r="62" fill="url(#moonFace)"/>
+    <ellipse cx="1342" cy="96" rx="10" ry="8" fill="#f5e3a8" opacity="0.8"/>
+    <ellipse cx="1378" cy="120" rx="8" ry="7" fill="#f5e3a8" opacity="0.7"/>
+    <ellipse cx="1358" cy="134" rx="6" ry="5" fill="#f5e3a8" opacity="0.7"/>
+  </g>
+
+  <!-- clouds scudding past the moon (kept off the moon face) -->
+  <g filter="url(#fB22)">
+    <ellipse cx="1255" cy="120" rx="110" ry="16" fill="#0f1e42" opacity="0.7"/>
+    <ellipse cx="1330" cy="185" rx="90" ry="12" fill="#16264e" opacity="0.75"/>
+    <ellipse cx="200" cy="105" rx="140" ry="14" fill="#0f1e42" opacity="0.8"/>
+    <ellipse cx="265" cy="122" rx="90" ry="10" fill="#16264e" opacity="0.85"/>
+    <ellipse cx="640" cy="62" rx="110" ry="12" fill="#0f1e42" opacity="0.7"/>
+    <ellipse cx="1360" cy="52" rx="95" ry="10" fill="#0f1e42" opacity="0.5"/>
+  </g>
+  <g filter="url(#fB14)">
+    <ellipse cx="1255" cy="110" rx="90" ry="7" fill="#2b3f7d" opacity="0.5"/>
+    <ellipse cx="200" cy="96" rx="110" ry="6" fill="#2b3f7d" opacity="0.5"/>
+  </g>
+
+  <!-- storm brewing at far right: flanks the moon, never covers its face -->
+  <path d="M1280,330 L1380,230 L1440,300 L1500,240 L1600,330 Z" fill="#0d1526"/>
+  <g filter="url(#fB22)">
+    <ellipse cx="1180" cy="150" rx="120" ry="45" fill="#0a1226" opacity="0.9"/>
+    <ellipse cx="1550" cy="145" rx="120" ry="55" fill="#0a1226" opacity="0.9"/>
+    <ellipse cx="1400" cy="215" rx="190" ry="45" fill="#0a1226" opacity="0.9"/>
+    <ellipse cx="1300" cy="40" rx="150" ry="16" fill="#0a1226" opacity="0.6"/>
+  </g>
+  <ellipse cx="1350" cy="72" rx="170" ry="10" fill="#2b3f7d" opacity="0.4" filter="url(#fB14)"/>
+  <g>
+    <path d="M1330,130 L1300,190 L1316,190 L1290,260" stroke="#cfe6ff" stroke-width="8" fill="none" opacity="0.35" filter="url(#fB6)"/>
+    <path d="M1330,130 L1300,190 L1316,190 L1290,260" stroke="#cfe6ff" stroke-width="3.5" fill="none" opacity="0.9"/>
+  </g>
+  <!-- ghost-crown: the King's shadow watching from the storm -->
+  <g>
+    <ellipse cx="1420" cy="212" rx="46" ry="34" fill="#4ade80" opacity="0.12" filter="url(#fB14)"/>
+    <path d="M1392,218 L1392,196 L1406,206 L1420,192 L1434,206 L1448,196 L1448,218 Z"
+      fill="#f5c542" fill-opacity="0.15" stroke="#f5c542" stroke-opacity="0.55" stroke-width="3"/>
+    <circle cx="1411" cy="238" r="4" fill="#4ade80" opacity="0.9"/>
+    <circle cx="1429" cy="238" r="4" fill="#4ade80" opacity="0.9"/>
+    <circle cx="1412.5" cy="236.5" r="1.2" fill="#eafff3"/><circle cx="1430.5" cy="236.5" r="1.2" fill="#eafff3"/>
+  </g>
+
+  <!-- distant ridge + far snowy peaks (Frostveil on the horizon) -->
+  <path d="M0,320 L1600,320 L1600,290 L1300,305 L1000,288 L700,306 L400,290 L150,306 L0,292 Z" fill="#141c33"/>
+  <g>
+    <path d="M-40,320 L110,205 L260,320 Z" fill="#1a2440"/>
+    <path d="M110,205 L145,245 L75,245 Z" fill="#e7eef5" opacity="0.55"/>
+    <path d="M220,320 L400,225 L580,320 Z" fill="#1a2440"/>
+    <path d="M400,225 L432,262 L368,262 Z" fill="#e7eef5" opacity="0.5"/>
+    <path d="M950,320 L1120,200 L1300,320 Z" fill="#1a2440"/>
+    <path d="M1120,200 L1155,240 L1085,240 Z" fill="#e7eef5" opacity="0.5"/>
+  </g>
+
+  <!-- Crownwell spire: the final destination, crowned and lit -->
+  <g>
+    <ellipse cx="1195" cy="200" rx="90" ry="120" fill="url(#crownAura)" opacity="0.5"/>
+    <path d="M1158,400 L1170,215 L1220,215 L1232,400 Z" fill="url(#spireGrad)"/>
+    <path d="M1170,215 L1162,400 M1220,215 L1228,400" stroke="#000000" stroke-width="3" opacity="0.3"/>
+    <ellipse cx="1195" cy="273" rx="22" ry="20" fill="#f59e0b" opacity="0.2" filter="url(#fB6)"/>
+    <rect x="1190" y="260" width="10" height="26" rx="2" fill="url(#windowGlow)" opacity="0.9"/>
+    <rect x="1190" y="300" width="10" height="26" rx="2" fill="url(#windowGlow)" opacity="0.9"/>
+    <rect x="1190" y="340" width="10" height="22" rx="2" fill="url(#windowGlow)" opacity="0.8"/>
+    <path d="M1168,215 L1168,188 L1184,202 L1195,182 L1206,202 L1222,188 L1222,215 Z" fill="#f5c542" opacity="0.85"/>
+    <rect x="1190" y="196" width="10" height="14" fill="#0a1226"/>
+    <circle cx="1195" cy="178" r="4" fill="#f5c542"/>
+    <circle cx="1195" cy="178" r="9" fill="#f5c542" opacity="0.3" filter="url(#fB3)"/>
+  </g>
+
+  <!-- pine ridge -->
+  <rect x="0" y="300" width="1600" height="22" fill="#12291f"/>
+  <g>
+    <use href="#pine" transform="translate(30,318) scale(1.1)"/><use href="#pine" transform="translate(85,318) scale(0.8)"/>
+    <use href="#pine" transform="translate(140,318) scale(1.2)"/><use href="#pine" transform="translate(200,318) scale(0.9)"/>
+    <use href="#pine" transform="translate(255,318)"/><use href="#pine" transform="translate(310,318) scale(0.75)"/>
+    <use href="#pine" transform="translate(365,318) scale(1.15)"/><use href="#pine" transform="translate(420,318) scale(0.85)"/>
+    <use href="#pine" transform="translate(475,318) scale(1.05)"/><use href="#pine" transform="translate(530,318) scale(0.8)"/>
+    <use href="#pine" transform="translate(585,318) scale(1.2)"/><use href="#pine" transform="translate(640,318) scale(0.9)"/>
+    <use href="#pine" transform="translate(695,318)"/><use href="#pine" transform="translate(750,318) scale(0.8)"/>
+    <use href="#pine" transform="translate(805,318) scale(1.1)"/><use href="#pine" transform="translate(860,318) scale(0.85)"/>
+    <use href="#pine" transform="translate(915,318) scale(1.15)"/><use href="#pine" transform="translate(970,318) scale(0.9)"/>
+    <use href="#pine" transform="translate(1025,318)"/><use href="#pine" transform="translate(1080,318) scale(0.8)"/>
+    <use href="#pine" transform="translate(1135,318) scale(1.2)"/><use href="#pine" transform="translate(1190,318) scale(0.85)"/>
+    <use href="#pine" transform="translate(1245,318) scale(1.05)"/><use href="#pine" transform="translate(1300,318) scale(0.8)"/>
+    <use href="#pine" transform="translate(1355,318) scale(1.1)"/><use href="#pine" transform="translate(1410,318) scale(0.9)"/>
+    <use href="#pine" transform="translate(1465,318) scale(1.15)"/><use href="#pine" transform="translate(1520,318) scale(0.85)"/>
+    <use href="#pine" transform="translate(1570,318)"/>
+  </g>
+
+  <!-- rolling ridge the far lands stand on -->
+  <path d="M0,400 C300,360 600,365 900,385 C1150,400 1350,390 1600,380 L1600,440 L0,440 Z" fill="#1a2740"/>
+
+  <!-- GREENWAKE: mill + waterwheel -->
+  <g>
+    <rect x="185" y="355" width="85" height="70" fill="#141d31"/>
+    <path d="M178,355 L227,330 L276,355 Z" fill="#232f52"/>
+    <rect x="192" y="380" width="18" height="20" rx="2" fill="#241a10"/>
+    <rect x="194" y="382" width="14" height="16" rx="1" fill="url(#windowGlow)" opacity="0.9"/>
+    <path d="M292,425 L296,402 M308,425 L304,402" stroke="#0d1526" stroke-width="5"/>
+    <circle cx="300" cy="398" r="30" fill="none" stroke="#0d1526" stroke-width="6"/>
+    <circle cx="300" cy="398" r="35" fill="none" stroke="#0d1526" stroke-width="5" stroke-dasharray="6 5"/>
+    <path d="M300,368 v60 M270,398 h60 M279,377 l42,42 M321,377 l-42,42" stroke="#0d1526" stroke-width="4"/>
+    <circle cx="300" cy="398" r="5" fill="#0d1526"/>
+    <ellipse cx="300" cy="428" rx="34" ry="7" fill="#3b5a7a" opacity="0.7"/>
+  </g>
+
+  <!-- REEDGLASS: stilt huts over night water -->
+  <g>
+    <rect x="405" y="408" width="260" height="24" fill="url(#waterGrad)"/>
+    <rect x="405" y="408" width="260" height="2" fill="#7dd3fc" opacity="0.4"/>
+    <rect x="420" y="376" width="220" height="5" fill="#0d1526"/>
+    <g fill="#0d1526">
+      <rect x="436" y="380" width="5" height="30"/><rect x="462" y="380" width="5" height="30"/>
+      <rect x="506" y="380" width="5" height="30"/><rect x="532" y="380" width="5" height="30"/>
+      <rect x="581" y="380" width="5" height="30"/><rect x="607" y="380" width="5" height="30"/>
+    </g>
+    <g fill="#141d31">
+      <rect x="428" y="346" width="52" height="34"/><rect x="498" y="346" width="52" height="34"/>
+      <rect x="573" y="346" width="52" height="34"/>
+    </g>
+    <g fill="#1c2742">
+      <path d="M424,346 L454,330 L484,346 Z"/><path d="M494,346 L524,330 L554,346 Z"/>
+      <path d="M569,346 L599,330 L629,346 Z"/>
+    </g>
+    <g fill="url(#windowGlow)" opacity="0.9">
+      <rect x="446" y="356" width="14" height="14" rx="1"/><rect x="516" y="356" width="14" height="14" rx="1"/>
+      <rect x="591" y="356" width="14" height="14" rx="1"/>
+    </g>
+    <circle cx="540" cy="388" r="3" fill="#fde68a"/>
+    <rect x="468" y="412" width="3" height="14" fill="#fde68a" opacity="0.35"/>
+    <circle cx="469" cy="411" r="3.5" fill="#fde68a"/>
+    <rect x="598" y="414" width="3" height="14" fill="#fde68a" opacity="0.3"/>
+    <circle cx="599" cy="413" r="3.5" fill="#fde68a" opacity="0.9"/>
+  </g>
+
+  <!-- IRONROOT: forge hall, furnace mouth, ember chimneys -->
+  <g>
+    <rect x="710" y="365" width="145" height="63" fill="#131c30"/>
+    <path d="M710,365 L745,345 L780,365 L815,345 L850,365" stroke="#1c2742" stroke-width="8" fill="none"/>
+    <ellipse cx="782" cy="408" rx="30" ry="22" fill="url(#emberGlow)" opacity="0.6"/>
+    <rect x="765" y="395" width="34" height="26" rx="8" fill="#f59e0b"/>
+    <rect x="771" y="401" width="22" height="15" rx="5" fill="#7c2d12"/>
+    <rect x="725" y="330" width="16" height="40" fill="#0d1526"/>
+    <rect x="820" y="325" width="16" height="45" fill="#0d1526"/>
+    <rect x="721" y="326" width="24" height="6" fill="#0d1526"/>
+    <rect x="816" y="321" width="24" height="6" fill="#0d1526"/>
+    <g fill="#fb923c" filter="url(#fB3)">
+      <circle cx="733" cy="316" r="3.5" opacity="0.9"/><circle cx="738" cy="298" r="3" opacity="0.7"/>
+      <circle cx="742" cy="280" r="2.5" opacity="0.5"/><circle cx="828" cy="311" r="3.5" opacity="0.9"/>
+      <circle cx="835" cy="291" r="3" opacity="0.7"/><circle cx="830" cy="272" r="2.5" opacity="0.5"/>
+    </g>
+    <g fill="#9aa4b2" filter="url(#fB6)">
+      <ellipse cx="733" cy="306" rx="12" ry="6" opacity="0.35"/>
+      <ellipse cx="828" cy="300" rx="12" ry="6" opacity="0.35"/>
+    </g>
+  </g>
+
+  <!-- CINDER: lighthouse sweeping its beam over the road ahead -->
+  <g>
+    <ellipse cx="975" cy="428" rx="55" ry="12" fill="#0d1526"/>
+    <ellipse cx="940" cy="430" rx="25" ry="8" fill="#0d1526"/>
+    <path d="M958,425 L966,330 L984,330 L992,425 Z" fill="#1a2440"/>
+    <rect x="960" y="322" width="30" height="6" fill="#0d1526"/>
+    <rect x="964" y="306" width="22" height="18" rx="2" fill="url(#windowGlow)"/>
+    <ellipse cx="975" cy="315" rx="20" ry="16" fill="#f59e0b" opacity="0.35" filter="url(#fB6)"/>
+    <path d="M960,306 L975,294 L990,306 Z" fill="#0d1526"/>
+    <path d="M966,306 L630,258 L630,292 Z" fill="url(#beamGrad)" opacity="0.5"/>
+    <g stroke="#3b5a7a" stroke-width="2" opacity="0.6" fill="none">
+      <path d="M915,432 q15,-8 30,0"/><path d="M1000,434 q15,-8 30,0"/>
+    </g>
+  </g>
+
+  <!-- FROSTVEIL: snow pines + a frozen pond -->
+  <g>
+    <use href="#snowpine" transform="translate(1052,420) scale(1.1)"/>
+    <use href="#snowpine" transform="translate(1076,422) scale(0.85)"/>
+    <use href="#snowpine" transform="translate(1100,420)"/>
+    <ellipse cx="1080" cy="426" rx="38" ry="9" fill="#9fc3d8" opacity="0.55"/>
+    <path d="M1052,424 h56" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+  </g>
+
+  <!-- open moonlit fields between the far lands and home -->
+  <rect x="0" y="428" width="1600" height="104" fill="url(#fieldGrad)"/>
+  <!-- low mist: separates the far-land plane from the home-field plane -->
+  <rect x="0" y="416" width="1600" height="28" fill="url(#mistGrad)"/>
+  <!-- grounding shadows under the far landmarks -->
+  <g fill="#000000" filter="url(#fB6)">
+    <ellipse cx="250" cy="430" rx="80" ry="8" opacity="0.35"/>
+    <ellipse cx="787" cy="431" rx="90" ry="8" opacity="0.35"/>
+    <ellipse cx="1080" cy="430" rx="45" ry="6" opacity="0.3"/>
+    <ellipse cx="1195" cy="402" rx="60" ry="7" opacity="0.35"/>
+  </g>
+  <path d="M700,532 L790,440 M900,532 L810,440" stroke="#2c3a2c" stroke-width="4" opacity="0.5" fill="none"/>
+  <!-- slime scouts in the field: the big slime problem is coming -->
+  <g>
+    <circle cx="380" cy="452" r="15" fill="#4ade80" opacity="0.25" filter="url(#fB6)"/>
+    <circle cx="371" cy="452" r="5" fill="#4ade80"/><circle cx="389" cy="452" r="5" fill="#4ade80"/>
+    <circle cx="372.5" cy="450.5" r="1.5" fill="#eafff3"/><circle cx="390.5" cy="450.5" r="1.5" fill="#eafff3"/>
+    <circle cx="700" cy="448" r="13" fill="#7dd3fc" opacity="0.25" filter="url(#fB6)"/>
+    <circle cx="692" cy="448" r="4.5" fill="#7dd3fc"/><circle cx="708" cy="448" r="4.5" fill="#7dd3fc"/>
+    <circle cx="1150" cy="455" r="15" fill="#4ade80" opacity="0.25" filter="url(#fB6)"/>
+    <circle cx="1141" cy="455" r="5" fill="#4ade80"/><circle cx="1159" cy="455" r="5" fill="#4ade80"/>
+    <circle cx="1142.5" cy="453.5" r="1.5" fill="#eafff3"/><circle cx="1160.5" cy="453.5" r="1.5" fill="#eafff3"/>
+  </g>
+
+  <!-- lantern posts flanking the road home -->
+  <g>
+    <circle cx="220" cy="379" r="60" fill="url(#lanternGlow)"/>
+    <ellipse cx="220" cy="505" rx="95" ry="20" fill="#f59e0b" opacity="0.07" filter="url(#fB14)"/>
+    <ellipse cx="220" cy="500" rx="46" ry="10" fill="#f59e0b" opacity="0.18" filter="url(#fB6)"/>
+    <rect x="216" y="387" width="8" height="110" fill="#241a10"/>
+    <rect x="210" y="493" width="20" height="8" fill="#1a1208"/>
+    <rect x="204" y="362" width="32" height="6" fill="#241a10"/>
+    <rect x="206" y="366" width="28" height="24" rx="3" fill="#3a2a18"/>
+    <rect x="210" y="370" width="20" height="16" rx="2" fill="#fff7cc"/>
+    <circle cx="1373" cy="379" r="60" fill="url(#lanternGlow)"/>
+    <ellipse cx="1373" cy="505" rx="95" ry="20" fill="#f59e0b" opacity="0.07" filter="url(#fB14)"/>
+    <ellipse cx="1373" cy="500" rx="46" ry="10" fill="#f59e0b" opacity="0.18" filter="url(#fB6)"/>
+    <rect x="1369" y="387" width="8" height="110" fill="#241a10"/>
+    <rect x="1363" y="493" width="20" height="8" fill="#1a1208"/>
+    <rect x="1357" y="362" width="32" height="6" fill="#241a10"/>
+    <rect x="1359" y="366" width="28" height="24" rx="3" fill="#3a2a18"/>
+    <rect x="1363" y="370" width="20" height="16" rx="2" fill="#fff7cc"/>
+  </g>
+
+  <!-- winding cobble road into town -->
+  <rect x="0" y="532" width="1600" height="368" fill="#141c28"/>
+  <path d="M655,532 L945,532 L1250,900 L350,900 Z" fill="url(#roadGrad)"/>
+  <path d="M745,532 L855,532 L1005,900 L595,900 Z" fill="#ffffff" opacity="0.05"/>
+  <!-- moonlight wash from the upper right + ambient occlusion along the verges -->
+  <path d="M860,532 L945,532 L1250,900 L1080,900 Z" fill="#cfe0f5" opacity="0.07" filter="url(#fB14)"/>
+  <path d="M655,532 L350,900" stroke="#000000" stroke-width="16" fill="none" opacity="0.3" filter="url(#fB6)"/>
+  <path d="M945,532 L1250,900" stroke="#000000" stroke-width="16" fill="none" opacity="0.3" filter="url(#fB6)"/>
+  <!-- cart ruts converging toward the horizon -->
+  <path d="M745,540 C700,650 640,770 560,895" stroke="#10151f" stroke-width="10" fill="none" opacity="0.45"/>
+  <path d="M855,540 C900,650 960,770 1040,895" stroke="#10151f" stroke-width="10" fill="none" opacity="0.45"/>
+  <path d="M655,532 L350,900" stroke="#2f6f45" stroke-width="6" fill="none"/>
+  <path d="M945,532 L1250,900" stroke="#2f6f45" stroke-width="6" fill="none"/>
+  <!-- cobbles: drop shadow + beveled base + moonlit top-left facet -->
+  <g id="cobbles" opacity="0.8">
+    <ellipse cx="680" cy="570" rx="14" ry="6"/><ellipse cx="760" cy="570" rx="14" ry="6"/>
+    <ellipse cx="840" cy="570" rx="14" ry="6"/><ellipse cx="920" cy="570" rx="14" ry="6"/>
+    <ellipse cx="660" cy="620" rx="17" ry="7"/><ellipse cx="750" cy="620" rx="17" ry="7"/>
+    <ellipse cx="840" cy="620" rx="17" ry="7"/><ellipse cx="930" cy="620" rx="17" ry="7"/>
+    <ellipse cx="620" cy="680" rx="20" ry="8"/><ellipse cx="730" cy="680" rx="20" ry="8"/>
+    <ellipse cx="840" cy="680" rx="20" ry="8"/><ellipse cx="950" cy="680" rx="20" ry="8"/>
+    <ellipse cx="580" cy="750" rx="24" ry="9"/><ellipse cx="700" cy="750" rx="24" ry="9"/>
+    <ellipse cx="820" cy="750" rx="24" ry="9"/><ellipse cx="940" cy="750" rx="24" ry="9"/>
+    <ellipse cx="1050" cy="750" rx="24" ry="9"/>
+    <ellipse cx="520" cy="830" rx="28" ry="10"/><ellipse cx="660" cy="830" rx="28" ry="10"/>
+    <ellipse cx="800" cy="830" rx="28" ry="10"/><ellipse cx="940" cy="830" rx="28" ry="10"/>
+    <ellipse cx="1080" cy="830" rx="28" ry="10"/>
+  </g>
+  <use href="#cobbles" transform="translate(4,6)" fill="#000000" opacity="0.35" filter="url(#fB3)"/>
+  <use href="#cobbles" fill="#3d4a5a"/>
+  <g fill="#9fb0c5" opacity="0.5">
+    <ellipse cx="676" cy="568" rx="4.5" ry="2"/><ellipse cx="756" cy="568" rx="4.5" ry="2"/>
+    <ellipse cx="836" cy="568" rx="4.5" ry="2"/><ellipse cx="916" cy="568" rx="4.5" ry="2"/>
+    <ellipse cx="655" cy="618" rx="5.5" ry="2.2"/><ellipse cx="745" cy="618" rx="5.5" ry="2.2"/>
+    <ellipse cx="835" cy="618" rx="5.5" ry="2.2"/><ellipse cx="925" cy="618" rx="5.5" ry="2.2"/>
+    <ellipse cx="615" cy="678" rx="6.5" ry="2.5"/><ellipse cx="725" cy="678" rx="6.5" ry="2.5"/>
+    <ellipse cx="835" cy="678" rx="6.5" ry="2.5"/><ellipse cx="945" cy="678" rx="6.5" ry="2.5"/>
+    <ellipse cx="574" cy="748" rx="8" ry="3"/><ellipse cx="694" cy="748" rx="8" ry="3"/>
+    <ellipse cx="814" cy="748" rx="8" ry="3"/><ellipse cx="934" cy="748" rx="8" ry="3"/>
+    <ellipse cx="1044" cy="748" rx="8" ry="3"/>
+    <ellipse cx="513" cy="828" rx="9" ry="3"/><ellipse cx="653" cy="828" rx="9" ry="3"/>
+    <ellipse cx="793" cy="828" rx="9" ry="3"/><ellipse cx="933" cy="828" rx="9" ry="3"/>
+    <ellipse cx="1073" cy="828" rx="9" ry="3"/>
+  </g>
+
+  <!-- grass verges -->
+  <path d="M0,532 L655,532 L350,900 L0,900 Z" fill="url(#vergeGrad)"/>
+  <path d="M945,532 L1600,532 L1600,900 L1250,900 Z" fill="url(#vergeGrad)"/>
+  <rect x="0" y="532" width="655" height="10" fill="#2f6f45"/>
+  <rect x="945" y="532" width="655" height="10" fill="#2f6f45"/>
+  <!-- tonal patches: moonlit rises and shaded hollows break the flat slab -->
+  <g filter="url(#fB14)">
+    <ellipse cx="150" cy="680" rx="130" ry="60" fill="#16291f" opacity="0.5"/>
+    <ellipse cx="300" cy="820" rx="150" ry="70" fill="#3f7d53" opacity="0.25"/>
+    <ellipse cx="1450" cy="660" rx="140" ry="60" fill="#16291f" opacity="0.5"/>
+    <ellipse cx="1330" cy="830" rx="150" ry="70" fill="#3f7d53" opacity="0.22"/>
+    <ellipse cx="80" cy="880" rx="120" ry="50" fill="#16291f" opacity="0.45"/>
+    <ellipse cx="1530" cy="880" rx="120" ry="50" fill="#16291f" opacity="0.45"/>
+  </g>
+  <!-- bushes: shadow + dark mass + moonlit crown -->
+  <g>
+    <ellipse cx="140" cy="712" rx="40" ry="8" fill="#000000" opacity="0.35" filter="url(#fB3)"/>
+    <circle cx="120" cy="695" r="22" fill="#1d4030"/><circle cx="145" cy="688" r="26" fill="#1d4030"/>
+    <circle cx="168" cy="696" r="20" fill="#1d4030"/>
+    <ellipse cx="145" cy="680" rx="20" ry="10" fill="#2f6f45"/>
+    <path d="M128,676 q17,-8 34,0" stroke="#4a8a55" stroke-width="3" fill="none" opacity="0.8"/>
+    <ellipse cx="90" cy="874" rx="46" ry="9" fill="#000000" opacity="0.35" filter="url(#fB3)"/>
+    <circle cx="66" cy="856" r="26" fill="#1d4030"/><circle cx="94" cy="848" r="31" fill="#1d4030"/>
+    <circle cx="120" cy="857" r="24" fill="#1d4030"/>
+    <ellipse cx="94" cy="839" rx="24" ry="12" fill="#2f6f45"/>
+    <path d="M74,834 q20,-9 40,0" stroke="#4a8a55" stroke-width="3" fill="none" opacity="0.8"/>
+    <ellipse cx="1470" cy="674" rx="42" ry="8" fill="#000000" opacity="0.35" filter="url(#fB3)"/>
+    <circle cx="1449" cy="657" r="23" fill="#1d4030"/><circle cx="1474" cy="650" r="27" fill="#1d4030"/>
+    <circle cx="1498" cy="658" r="21" fill="#1d4030"/>
+    <ellipse cx="1474" cy="642" rx="21" ry="10" fill="#2f6f45"/>
+    <path d="M1457,638 q17,-8 34,0" stroke="#4a8a55" stroke-width="3" fill="none" opacity="0.8"/>
+    <ellipse cx="1560" cy="844" rx="38" ry="8" fill="#000000" opacity="0.35" filter="url(#fB3)"/>
+    <circle cx="1542" cy="828" r="21" fill="#1d4030"/><circle cx="1564" cy="821" r="25" fill="#1d4030"/>
+    <ellipse cx="1564" cy="813" rx="19" ry="9" fill="#2f6f45"/>
+  </g>
+  <!-- stones: shadow + body + moonlit facet -->
+  <g>
+    <ellipse cx="405" cy="788" rx="26" ry="6" fill="#000000" opacity="0.35" filter="url(#fB3)"/>
+    <ellipse cx="405" cy="778" rx="24" ry="14" fill="#4a5568"/>
+    <ellipse cx="397" cy="772" rx="10" ry="5" fill="#9fb0c5" opacity="0.7"/>
+    <ellipse cx="1180" cy="728" rx="20" ry="5" fill="#000000" opacity="0.35" filter="url(#fB3)"/>
+    <ellipse cx="1180" cy="720" rx="18" ry="11" fill="#4a5568"/>
+    <ellipse cx="1174" cy="715" rx="7" ry="4" fill="#9fb0c5" opacity="0.7"/>
+  </g>
+  <g stroke="#4a8a55">
+    <use href="#tuft" transform="translate(80,600)"/><use href="#tuft" transform="translate(180,650) scale(1.2)"/>
+    <use href="#tuft" transform="translate(260,580) scale(0.85)"/><use href="#tuft" transform="translate(120,720) scale(1.1)"/>
+    <use href="#tuft" transform="translate(300,760)"/><use href="#tuft" transform="translate(60,820) scale(1.2)"/>
+    <use href="#tuft" transform="translate(200,850) scale(0.9)"/><use href="#tuft" transform="translate(330,880) scale(1.1)"/>
+  </g>
+  <g stroke="#2f6f45">
+    <use href="#tuft" transform="translate(1300,600) scale(1.1)"/><use href="#tuft" transform="translate(1450,640)"/>
+    <use href="#tuft" transform="translate(1520,580) scale(0.85)"/><use href="#tuft" transform="translate(1380,720) scale(1.2)"/>
+    <use href="#tuft" transform="translate(1500,780)"/><use href="#tuft" transform="translate(1330,840) scale(1.1)"/>
+    <use href="#tuft" transform="translate(1550,860) scale(0.9)"/><use href="#tuft" transform="translate(1430,880) scale(1.2)"/>
+  </g>
+  <!-- near-field tufts: bigger, darker, closest to the viewer -->
+  <g stroke="#24503a" stroke-width="4">
+    <use href="#tuft" transform="translate(40,892) scale(1.7)"/>
+    <use href="#tuft" transform="translate(1560,892) scale(1.8)"/>
+    <use href="#tuft" transform="translate(1300,600) scale(1.2)"/>
+    <use href="#tuft" transform="translate(420,610) scale(1.1)"/>
+  </g>
+  <g>
+    <circle cx="150" cy="680" r="8" fill="#f472b6" opacity="0.3"/><circle cx="150" cy="680" r="4" fill="#f472b6"/>
+    <circle cx="280" cy="820" r="8" fill="#fde68a" opacity="0.3"/><circle cx="280" cy="820" r="4" fill="#fde68a"/>
+    <circle cx="90" cy="760" r="8" fill="#7dd3fc" opacity="0.3"/><circle cx="90" cy="760" r="4" fill="#7dd3fc"/>
+    <circle cx="1450" cy="700" r="8" fill="#f472b6" opacity="0.3"/><circle cx="1450" cy="700" r="4" fill="#f472b6"/>
+    <circle cx="1330" cy="780" r="8" fill="#fde68a" opacity="0.3"/><circle cx="1330" cy="780" r="4" fill="#fde68a"/>
+    <circle cx="1530" cy="740" r="8" fill="#7dd3fc" opacity="0.3"/><circle cx="1530" cy="740" r="4" fill="#7dd3fc"/>
+  </g>
+
+  <!-- signpost where the road leaves home -->
+  <g>
+    <path d="M296,682 L307,682 L272,694 L261,694 Z" fill="#000000" opacity="0.3" filter="url(#fB3)"/>
+    <ellipse cx="272" cy="690" rx="36" ry="8" fill="#000000" opacity="0.3" filter="url(#fB3)"/>
+    <rect x="296" y="600" width="11" height="82" fill="#5a4028"/>
+    <rect x="296" y="600" width="3" height="82" fill="#7a5a38"/>
+    <rect x="304" y="600" width="3" height="82" fill="#3a2a18"/>
+    <path d="M299,612 v58 M302,606 v66" stroke="#4a3520" stroke-width="1.5" opacity="0.7"/>
+    <rect x="307" y="608" width="66" height="17" fill="#6a4a2c"/>
+    <rect x="307" y="608" width="66" height="3" fill="#7a5a38"/>
+    <rect x="307" y="622" width="66" height="3" fill="#3a2a18"/>
+    <path d="M373,608 L392,616 L373,625 Z" fill="#6a4a2c"/>
+    <path d="M373,621 L384,616 L373,611 Z" fill="#3a2a18" opacity="0.6"/>
+    <rect x="231" y="634" width="65" height="17" fill="#6a4a2c"/>
+    <rect x="231" y="634" width="65" height="3" fill="#7a5a38"/>
+    <rect x="231" y="648" width="65" height="3" fill="#3a2a18"/>
+    <path d="M231,634 L212,642 L231,651 Z" fill="#6a4a2c"/>
+    <path d="M231,647 L220,642 L231,637 Z" fill="#3a2a18" opacity="0.6"/>
+  </g>
+
+  <!-- fences -->
+  <g fill="#5a4028">
+    <rect x="50" y="548" width="300" height="9"/><rect x="70" y="538" width="11" height="36"/>
+    <rect x="150" y="538" width="11" height="36"/><rect x="230" y="538" width="11" height="36"/>
+    <rect x="310" y="538" width="11" height="36"/>
+    <rect x="1250" y="548" width="300" height="9"/><rect x="1270" y="538" width="11" height="36"/>
+    <rect x="1350" y="538" width="11" height="36"/><rect x="1430" y="538" width="11" height="36"/>
+    <rect x="1510" y="538" width="11" height="36"/>
+  </g>
+  <g fill="#7a5a38">
+    <rect x="50" y="548" width="300" height="2"/><rect x="1250" y="548" width="300" height="2"/>
+  </g>
+  <!-- fence grounding: rail under-shadow, post base shadows, cap highlights -->
+  <g fill="#000000" filter="url(#fB3)">
+    <rect x="50" y="559" width="300" height="5" opacity="0.3"/>
+    <rect x="1250" y="559" width="300" height="5" opacity="0.3"/>
+    <ellipse cx="75" cy="576" rx="12" ry="4" opacity="0.3"/><ellipse cx="155" cy="576" rx="12" ry="4" opacity="0.3"/>
+    <ellipse cx="235" cy="576" rx="12" ry="4" opacity="0.3"/><ellipse cx="315" cy="576" rx="12" ry="4" opacity="0.3"/>
+    <ellipse cx="1275" cy="576" rx="12" ry="4" opacity="0.3"/><ellipse cx="1355" cy="576" rx="12" ry="4" opacity="0.3"/>
+    <ellipse cx="1435" cy="576" rx="12" ry="4" opacity="0.3"/><ellipse cx="1515" cy="576" rx="12" ry="4" opacity="0.3"/>
+  </g>
+  <g fill="#8a6a42">
+    <rect x="68" y="534" width="15" height="2"/><rect x="148" y="534" width="15" height="2"/>
+    <rect x="228" y="534" width="15" height="2"/><rect x="308" y="534" width="15" height="2"/>
+    <rect x="1268" y="534" width="15" height="2"/><rect x="1348" y="534" width="15" height="2"/>
+    <rect x="1428" y="534" width="15" height="2"/><rect x="1508" y="534" width="15" height="2"/>
+  </g>
+
+  <!-- fireflies above the grass -->
+  <g>
+    <circle cx="250" cy="505" r="9" fill="#bef264" opacity="0.35"/><circle cx="250" cy="505" r="3" fill="#bef264" opacity="0.95"/>
+    <circle cx="480" cy="492" r="9" fill="#fde68a" opacity="0.35"/><circle cx="480" cy="492" r="3" fill="#fde68a" opacity="0.95"/>
+    <circle cx="1080" cy="498" r="9" fill="#bef264" opacity="0.35"/><circle cx="1080" cy="498" r="3" fill="#bef264" opacity="0.95"/>
+    <circle cx="1330" cy="508" r="9" fill="#fde68a" opacity="0.35"/><circle cx="1330" cy="508" r="3" fill="#fde68a" opacity="0.95"/>
+    <circle cx="900" cy="520" r="9" fill="#4ade80" opacity="0.3"/><circle cx="900" cy="520" r="3" fill="#4ade80" opacity="0.9"/>
+    <circle cx="160" cy="520" r="9" fill="#fde68a" opacity="0.3"/><circle cx="160" cy="520" r="3" fill="#fde68a" opacity="0.9"/>
+    <circle cx="1500" cy="495" r="9" fill="#bef264" opacity="0.3"/><circle cx="1500" cy="495" r="3" fill="#bef264" opacity="0.9"/>
+    <circle cx="620" cy="540" r="9" fill="#fde68a" opacity="0.3"/><circle cx="620" cy="540" r="3" fill="#fde68a" opacity="0.9"/>
+  </g>
+
+  <!-- vignette + letterbox -->
+  <rect x="0" y="0" width="1600" height="900" fill="url(#vignette)"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#000000" opacity="0.3"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#000000" opacity="0.3"/>
+</svg>
